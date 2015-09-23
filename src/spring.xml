@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> --> 
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<bean id="triangle" class="com.paypal.Spring.Triangle" autowire="byName">
+		
+	</bean>
+	
+	<bean id="circle" class="com.paypal.Spring.Circle">
+		
+	</bean>
+	
+	<bean id="pointB" class="com.paypal.Spring.Point" scope="prototype">
+		<property name="x" value="20" />
+		<property name="y" value="0" />
+	</bean>
+	
+	<bean id="pointA" class="com.paypal.Spring.Point" scope="prototype">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+	
+	<bean id="pointC" class="com.paypal.Spring.Point" scope="prototype">
+		<property name="x" value="${pointC.cordX}" />
+		<property name="y" value="${pointC.cordY}" />
+	</bean>
+	
+	<bean id="centre" class="com.paypal.Spring.Point" scope="prototype">
+		<!-- <qualifier value="circleRelated" />  -->
+		<property name="x" value="${center.cordX}" />
+		<property name="y" value="${center.cordY}" />
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="pointconfig.properties" />
+	</bean>
+		
+	<!-- 
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
+	<bean class="org.springframework.beans.factory.annotation.Qualifier" />	
+	-->	
+	<context:annotation-config/>  
+	
+</beans>
+

@@ -58,6 +58,7 @@
 	<bean class="org.springframework.beans.factory.annotation.Qualifier" />	
 	-->	
 	<context:annotation-config/>  
+	<context:component-scan base-package="com.paypal.Spring" />
 	
 </beans>
 
